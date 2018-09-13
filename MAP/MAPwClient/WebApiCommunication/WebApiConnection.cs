@@ -18,7 +18,7 @@ namespace MAPwClient.WebApiCommunication
             client.BaseAddress = new Uri("http://localhost:60792");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-
+        /*
         public async void GetUser(string username, string password)
         {
             try
@@ -31,6 +31,6 @@ namespace MAPwClient.WebApiCommunication
             {
 
             }
-        }
+        }*/
     }
 }
