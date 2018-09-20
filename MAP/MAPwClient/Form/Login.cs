@@ -5,10 +5,12 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Automation;
 using System.Windows.Forms;
+using MAPwClient.WebApiCommunication;
 
 namespace MAPwClient
 {
@@ -43,8 +45,7 @@ namespace MAPwClient
 
         private void login_btn_Click(object sender, EventArgs e)
         {
-            var a = new Uri(GetActiveTabUrl());
-            password_textBox.Text = a.Host;
+            
         }
 
         private string GetActiveTabUrl()
