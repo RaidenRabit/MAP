@@ -15,7 +15,7 @@ namespace MAPeApi.Controllers
         [Route("api/data/forall")]
         public IHttpActionResult Get()
         {
-            return Ok("Now server time is: " + DateTime.Now.ToString());
+            return Ok("Now server time is: " + DateTime.Now);
         }
 
         [Authorize]
@@ -24,10 +24,10 @@ namespace MAPeApi.Controllers
         public IHttpActionResult GetForUser()
         {
             var identity = (ClaimsIdentity) User.Identity;
-            return Ok("Hello" + identity.Name);
+            return Ok("Hello " + identity.Name);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpGet]
         [Route("api/data/Admin")]
         public IHttpActionResult GetForAdmin()

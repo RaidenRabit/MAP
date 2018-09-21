@@ -1,26 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using MAPwClient.WebApiCommunication;
 
 namespace MAPwClient.Controller
 {
     public class LoginController
     {
-        private HttpClient conn;
+        private CallApiController apiController;
+
         public LoginController()
         {
-            conn = new WebApiConnection().GetClient();
+            apiController = new CallApiController();
         }
 
-        public async Task GetUser(string username, string password)
+        public async Task<HttpResponseMessage> Login(string username, string password)
         {
-            request = new HttpRequestMessage(HttpMethod.Get, $"api/documents/{username}?password={password}");
-            conn.ReadAsync(request);
-
+            if (await apiController.GetToken(username, password))
+                return await apiController.GetFromApi("/api/data/Admin");
+            else
+            {
+                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            }
         }
     }
 }

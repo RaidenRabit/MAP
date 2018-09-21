@@ -1,24 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Automation;
 using System.Windows.Forms;
-using MAPwClient.WebApiCommunication;
+using MAPwClient.Controller;
 
 namespace MAPwClient
 {
     public partial class Login : Form
     {
+        private LoginController loginController;
+
         public Login()
         {
             InitializeComponent();
+            loginController = new LoginController();
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
@@ -43,9 +38,17 @@ namespace MAPwClient
             Properties.Settings.Default.Save();
         }
 
-        private void login_btn_Click(object sender, EventArgs e)
+        private async void login_btn_Click(object sender, EventArgs e)
         {
-            
+            string b;
+            var a = await loginController.Login(username_textBox.Text, password_textBox.Text);
+            if (a.IsSuccessStatusCode)
+                b = a.Content.ReadAsStringAsync().Result;
+            else
+            {
+                b = "failed";
+            }
+            password_textBox.Text = b;
         }
 
         private string GetActiveTabUrl()
