@@ -48,7 +48,7 @@ namespace MAPwClient
             {
                 b = "failed";
             }
-            password_textBox.Text = b;
+            output_textBox.Text = b;
         }
 
         private string GetActiveTabUrl()

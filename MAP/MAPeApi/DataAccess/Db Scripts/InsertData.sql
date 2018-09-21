@@ -1,0 +1,4 @@
+﻿USE dmaj0916_197331
+--user: admin, admin, 959s9f+7w0g77dvgwrb0@sharklasers.com, AdminTest
+DECLARE @salt UNIQUEIDENTIFIER=NEWID() INSERT INTO Users(username, salt, passwordHash, email, nickname)OUTPUT INSERTED.userID values ('admin', @salt, HASHBYTES('SHA2_512', 'admin'+CAST(@salt AS NVARCHAR(36))), '959s9f+7w0g77dvgwrb0@sharklasers.com', 'AdminTest' );
+DECLARE @salt UNIQUEIDENTIFIER=NEWID() INSERT INTO Users(username, salt, passwordHash, email, nickname)OUTPUT INSERTED.userID values ('user', @salt, HASHBYTES('SHA2_512', 'user'+CAST(@salt AS NVARCHAR(36))), '959s9f+7w0g77dvgwrb0@sharklasers.com', 'UserTest' );

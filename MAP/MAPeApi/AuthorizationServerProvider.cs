@@ -1,15 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
+using MAPeApi.DataManagement;
+using MAPeApi.Models;
 using Microsoft.Owin.Security.OAuth;
 
 namespace MAPeApi
 {
     public class AuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
+        private UsersDM usersDM;
+
+        public AuthorizationServerProvider()
+        {
+            usersDM = new UsersDM();
+        }
+
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
             context.Validated();
@@ -18,20 +23,22 @@ namespace MAPeApi
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            if (context.UserName == "admin" && context.Password == "admin")
-            {
-                identity.AddClaim(new Claim(ClaimTypes.Role, "Administrator"));
-                identity.AddClaim(new Claim("username", "admin"));
-                identity.AddClaim(new Claim(ClaimTypes.Name, "testingAdmin"));
-                context.Validated(identity);
-            }
-            else if(context.UserName == "user" && context.Password == "user")
-            {
-                identity.AddClaim(new Claim(ClaimTypes.Role, "User"));
-                identity.AddClaim(new Claim("username", "user"));
-                identity.AddClaim(new Claim(ClaimTypes.Name, "testingUser"));
-                context.Validated(identity);
-            }
+            User user = usersDM.Login(context.UserName, context.Password);
+            if(user != null)
+                if (user.UserId == 1)
+                {
+                    identity.AddClaim(new Claim(ClaimTypes.Role, "Administrator"));
+                    identity.AddClaim(new Claim("username", user.Username));
+                    identity.AddClaim(new Claim(ClaimTypes.Name, user.Nickname));
+                    context.Validated(identity);
+                }
+                else
+                {
+                    identity.AddClaim(new Claim(ClaimTypes.Role, "User"));
+                    identity.AddClaim(new Claim("username", user.Username));
+                    identity.AddClaim(new Claim(ClaimTypes.Name, user.Nickname));
+                    context.Validated(identity);
+                }
             else
             {
                 context.SetError("invalid grant", "Wrong username or password");

@@ -20,7 +20,7 @@ namespace MAPeApi.Controllers
 
         [Authorize]
         [HttpGet]
-        [Route("api/data/User")]
+        [Route("api/data/GetUser")]
         public IHttpActionResult GetForUser()
         {
             var identity = (ClaimsIdentity) User.Identity;
