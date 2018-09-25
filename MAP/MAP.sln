@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAPwClient", "MAPwClient\MAPwClient.csproj", "{F90B0D5F-431B-459F-8165-BFEA6539BE2B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{67385855-16A3-4271-8FA5-C2B573A0A924} = {67385855-16A3-4271-8FA5-C2B573A0A924}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAPApi", "MAPeApi\MAPApi.csproj", "{67385855-16A3-4271-8FA5-C2B573A0A924}"
 EndProject

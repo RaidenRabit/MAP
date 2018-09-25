@@ -8,23 +8,19 @@ using System.Threading.Tasks;
 
 namespace MAPwClient.Controller
 {
-    public class LoginController
+    public class UserController
     {
         private CallApiController apiController;
 
-        public LoginController()
+        public UserController()
         {
             apiController = new CallApiController();
         }
 
         public async Task<HttpResponseMessage> Login(string username, string password)
         {
-            if (await apiController.GetToken(username, password))
-                return await apiController.GetFromApi("/api/data/Admin");
-            else
-            {
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
-            }
+            await apiController.GetToken(username, password);
+            return null;
         }
     }
 }
