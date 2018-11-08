@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAPwClient", "MAPwClient\MA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAPApi", "MAPeApi\MAPApi.csproj", "{67385855-16A3-4271-8FA5-C2B573A0A924}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{0C940A6B-D6CD-4EED-8141-322F3C5D39F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{EA5AE51C-B55E-401C-9C38-9DED2F6CBD08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +28,14 @@ Global
 		{67385855-16A3-4271-8FA5-C2B573A0A924}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67385855-16A3-4271-8FA5-C2B573A0A924}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67385855-16A3-4271-8FA5-C2B573A0A924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C940A6B-D6CD-4EED-8141-322F3C5D39F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C940A6B-D6CD-4EED-8141-322F3C5D39F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C940A6B-D6CD-4EED-8141-322F3C5D39F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C940A6B-D6CD-4EED-8141-322F3C5D39F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA5AE51C-B55E-401C-9C38-9DED2F6CBD08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA5AE51C-B55E-401C-9C38-9DED2F6CBD08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA5AE51C-B55E-401C-9C38-9DED2F6CBD08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA5AE51C-B55E-401C-9C38-9DED2F6CBD08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

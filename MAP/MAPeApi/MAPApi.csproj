@@ -131,8 +131,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="AuthorizationServerProvider.cs" />
-    <Compile Include="AuthorizeAttribute.cs" />
+    <Compile Include="Authentication\AuthorizationServerProvider.cs" />
+    <Compile Include="Authentication\AuthorizeAttribute.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="DataAccess\DbConnection.cs" />
     <Compile Include="DataAccess\DbUser.cs" />
@@ -140,9 +140,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StartupOwin.cs" />
+    <Compile Include="Authentication\StartupOwin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -155,6 +154,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{0c940a6b-d6cd-4eed-8141-322f3c5d39f1}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
