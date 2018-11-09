@@ -29,15 +29,13 @@ namespace MAPeApi
                 if (user.UserId == 1)
                 {
                     identity.AddClaim(new Claim(ClaimTypes.Role, "Administrator"));
-                    identity.AddClaim(new Claim("username", user.Username));
-                    identity.AddClaim(new Claim(ClaimTypes.Name, user.Nickname));
+                    identity.AddClaim(new Claim("userId", user.UserId.ToString()));
                     context.Validated(identity);
                 }
                 else
                 {
                     identity.AddClaim(new Claim(ClaimTypes.Role, "User"));
-                    identity.AddClaim(new Claim("username", user.Username));
-                    identity.AddClaim(new Claim(ClaimTypes.Name, user.Nickname));
+                    identity.AddClaim(new Claim("userId", user.UserId.ToString()));
                     context.Validated(identity);
                 }
             else
