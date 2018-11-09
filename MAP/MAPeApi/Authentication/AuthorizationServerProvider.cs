@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using MAPeApi.DataManagement;
+using MAPeApi.DataManagement.iDM;
 using MAPeApi.Models;
 using Microsoft.Owin.Security.OAuth;
 
@@ -8,11 +9,11 @@ namespace MAPeApi
 {
     public class AuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
-        private UsersDM usersDM;
+        private readonly IUserDM _usersDm;
 
         public AuthorizationServerProvider()
         {
-            usersDM = new UsersDM();
+            _usersDm = new UsersDM();
         }
 
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
@@ -23,7 +24,7 @@ namespace MAPeApi
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            User user = usersDM.Login(context.UserName, context.Password);
+            User user = _usersDm.Login(context.UserName, context.Password);
             if(user != null)
                 if (user.UserId == 1)
                 {
