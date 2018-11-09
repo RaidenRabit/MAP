@@ -13,7 +13,7 @@ namespace MAPwClient.Controller
     public class CallApiController
     {
         private Token token;
-
+        
         public async Task<bool> GetToken(string userName, string password)
         {
             WebApiConnection con = new WebApiConnection();
