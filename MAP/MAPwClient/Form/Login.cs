@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Automation;
 using System.Windows.Forms;
 using MAPwClient.Controller;
@@ -25,10 +28,24 @@ namespace MAPwClient
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.Top = Properties.Settings.Default.Top;
-            this.Left = Properties.Settings.Default.Left;
-            this.Width = Properties.Settings.Default.Width;
-            this.Height = Properties.Settings.Default.Height;
+            Rectangle formRectangle = IsOnScreen();
+            this.Top = formRectangle.Top;
+            this.Left = formRectangle.Left;
+            this.Width = formRectangle.Width;
+            this.Height = formRectangle.Height;
+        }
+        private Rectangle IsOnScreen()
+        {
+            Rectangle formRectangle = new Rectangle(Properties.Settings.Default.Left, Properties.Settings.Default.Top, Properties.Settings.Default.Width, Properties.Settings.Default.Height);
+
+            if (Screen.AllScreens.Any(s => s.WorkingArea.IntersectsWith(formRectangle)))
+                return formRectangle;
+            else
+            {
+                List<int> defaultTLWH = Properties.Settings.Default.DefaultTLWH.Split(',').Select(int.Parse).ToList();
+                return new Rectangle(defaultTLWH[1], defaultTLWH[0], defaultTLWH[2], defaultTLWH[3]);
+            }
+
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)

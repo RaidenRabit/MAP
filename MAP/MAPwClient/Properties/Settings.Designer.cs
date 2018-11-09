@@ -49,7 +49,7 @@ namespace MAPwClient.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
         public int Top {
             get {
                 return ((int)(this["Top"]));
@@ -61,7 +61,7 @@ namespace MAPwClient.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
         public int Left {
             get {
                 return ((int)(this["Left"]));
@@ -73,7 +73,7 @@ namespace MAPwClient.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int Width {
             get {
                 return ((int)(this["Width"]));
@@ -85,13 +85,22 @@ namespace MAPwClient.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int Height {
             get {
                 return ((int)(this["Height"]));
             }
             set {
                 this["Height"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100, 100, 100, 100")]
+        public string DefaultTLWH {
+            get {
+                return ((string)(this["DefaultTLWH"]));
             }
         }
     }
