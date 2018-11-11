@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Automation;
 using System.Windows.Forms;
+using MAPeApi.Models;
 using MAPwClient.Controller;
 
 namespace MAPwClient
@@ -57,15 +58,14 @@ namespace MAPwClient
 
         private async void login_btn_Click(object sender, EventArgs e)
         {
-            string b;
-            var a = await _userController.Login(username_textBox.Text, password_textBox.Text);
-            if (a.IsSuccessStatusCode)
-                b = a.Content.ReadAsStringAsync().Result;
-            else
+            User user = await _userController.Login(username_textBox.Text, password_textBox.Text);
+            if (user != null)
             {
-                b = "failed";
+                output_textBox.Text = "Username: " + user.Username + "\nEmail: " + user.Email + "\nUserId: " +
+                                      user.UserId + "\nNickname: " + user.Nickname;
             }
-            output_textBox.Text = b;
+            else
+                output_textBox.Text = "Failed";
         }
 
         private string GetActiveTabUrl()
