@@ -2,3 +2,5 @@
 --user: admin, admin, 959s9f+7w0g77dvgwrb0@sharklasers.com, AdminTest
 DECLARE @salt UNIQUEIDENTIFIER=NEWID() INSERT INTO Users(username, salt, passwordHash, email, nickname)OUTPUT INSERTED.userID values ('admin', @salt, HASHBYTES('SHA2_512', 'admin'+CAST(@salt AS NVARCHAR(36))), '959s9f+7w0g77dvgwrb0@sharklasers.com', 'AdminTest' );
 DECLARE @salt UNIQUEIDENTIFIER=NEWID() INSERT INTO Users(username, salt, passwordHash, email, nickname)OUTPUT INSERTED.userID values ('user', @salt, HASHBYTES('SHA2_512', 'user'+CAST(@salt AS NVARCHAR(36))), '959s9f+7w0g77dvgwrb0@sharklasers.com', 'UserTest' );
+DECLARE @salt UNIQUEIDENTIFIER=NEWID() INSERT INTO Users(username, salt, passwordHash, email, nickname)OUTPUT INSERTED.userID values ('testUser1', @salt, HASHBYTES('SHA2_512', 'testUser1.test'+CAST(@salt AS NVARCHAR(36))), 'fspthp+hwbc4c4p2yku9v@sharklasers.com', 'testUser1' );
+DECLARE @salt UNIQUEIDENTIFIER=NEWID() INSERT INTO Users(username, salt, passwordHash, email, nickname)OUTPUT INSERTED.userID values ('testUser2', @salt, HASHBYTES('SHA2_512', 'testUser2.test'+CAST(@salt AS NVARCHAR(36))), 'fsptin+cdctcgj3u3t1vk@sharklasers.com', 'testUser2' );
